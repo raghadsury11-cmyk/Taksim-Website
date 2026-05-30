@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم تقسيم</title>
+    <link rel="icon" type="image/svg+xml" href="img/image-removebg-preview.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Taksim / تقسيم</h1>
+            </div>
+            <nav class="navmenu">
+                <ul>
+                    <li><a href="#hero">الرئيسية</a></li>
+                    <li><a href="#menu-sections">قائمة الطعام</a></li>
+                    <li><a href="#testimonials">آراء الزبائن</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle-btn" title="تغيير المظهر">
+                    <span class="theme-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </span>
+                    <span class="theme-label">ليلي</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ================= HERO SECTION ================= -->
+        <section id="hero" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/photo_2026-05-30_18-32-09.jpg');">
+            <div class="hero-content">
+                <h2>مطعم تقسيم</h2>
+                <p>من تقسيم... إلى قلبك مباشرة! عِش معنا تجربة ألذّ المأكولات التركية والمتوسطية الأصيلة في قلب طرابلس بجلسات مريحة وخدمة تليق بك وبصغارك.</p>
+                <div class="hero-suggestions">
+                    <h3>✨ عروضنا الخاصة اليوم:</h3>
+                    <ul>
+                        <li>🔥 خصم 15% على وجبات المشاوي العائلية كل يوم إثنين.</li>
+                        <li>🍕 جرب الآن بيتزا النابوليتانا الأصلية حصرياً في فرع السياحية.</li>
+                    </ul>
+                </div>
+                <a href="#menu-sections" class="cta-btn">استكشف القائمة المميّزة</a>
+            </div>
+        </section>
+
+        <!-- ================= MENU MAIN SECTIONS ================= -->
+        <section id="menu-sections">
+            <div class="container-title">
+                <h2>قائمة المأكولات</h2>
+                <p>اختر الفئة المفضلة لديك واستكشف أطباقنا الشهية</p>
+            </div>
+            
+            <div class="sections-grid">
+                <div class="section-box" onclick="redirectToMenu('all-category')">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=400" alt="جميع الأصناف">
+                    <div class="box-overlay"><h3>جميع الأصناف</h3></div>
+                </div>
+                <div class="section-box" onclick="redirectToMenu('top-selling')">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=400" alt="الأكثر طلباً">
+                    <div class="box-overlay"><h3>الأكثر طلباً</h3></div>
+                </div>
+                <div class="section-box" onclick="redirectToMenu('healthy-food')">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=400" alt="الأكل الصحي">
+                    <div class="box-overlay"><h3>الأكل الصحي</h3></div>
+                </div>
+                <div class="section-box" onclick="redirectToMenu('special-dishes')">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" alt="الأطباق المبتكرة والجديدة">
+                    <div class="box-overlay"><h3>الأطباق الخاصة والمبتكرة</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TESTIMONIALS SECTION ================= -->
+        <section id="testimonials">
+            <div class="container-title">
+                <h2>قالوا عنا</h2>
+                <p>سعداء جداً بآراء وتقييمات زبائننا الكرام لمطعم تقسيم</p>
+            </div>
+            <div class="testimonials-carousel-wrapper">
+                <div class="testimonials-track" id="testimonials-track">
+                    <blockquote class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">"من أجمل المطاعم الي نحب نمشيلها الصراحة، طعم ونظافة وضيافة ممتازة."</p>
+                        <cite>OM JANA — فيسبوك</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">"فرع جرابة أكثر مكان يحبوه صغاري وشبه كل أسبوع مجمعين فيه."</p>
+                        <cite>Srro Aboshagour — فيسبوك</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">"بجد مطعمكم التووووب بالنسبة ليا وغيييير في كل شيء ربي يفتح عليكم."</p>
+                        <cite>Hanan M SHerif — فيسبوك</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">"الأكل كان لذيذ جداً والخدمة سريعة ومريحة، ننصح الكل يجي يجرب."</p>
+                        <cite>Ahmed Al-Warfalli — فيسبوك</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">"المكان نظيف وراقي والأسعار معقولة جداً مقارنةً بالجودة العالية."</p>
+                        <cite>Fatima Benali — جوجل</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <div class="stars">★★★★☆</div>
+                        <p class="quote-text">"الشيش طاووق والمشاوي من أحلى اللي ذقتهم في طرابلس، بنرجع دايماً."</p>
+                        <cite>Khalid Mansour — فيسبوك</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">"جلسة عائلية رائعة، الأطفال كانوا مبسوطين والأكل على مستوى عالي."</p>
+                        <cite>Nora Al-Gharbi — إنستغرام</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT US & FORMS ================= -->
+        <section id="contact">
+            <div class="container-title">
+                <h2>التواصل والموقع</h2>
+                <p>نسعد دائماً بخدمتكم في فروعنا أو استقبال رسائلكم الإلكترونية</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Branches details info -->
+                <div class="branches-info">
+                    <h3>فروعنا ومعلومات الاتصال</h3>
+                    
+                    <div class="branch-item">
+                        <h4>
+                            <svg class="branch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            فرع الجرابة
+                        </h4>
+                        <div class="contact-links">
+                            <a href="tel:0917000035" class="contact-link phone-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.5a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+                                091-700-00-35
+                            </a>
+                            <a href="tel:0920007232" class="contact-link phone-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.5a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+                                092-000-72-32
+                            </a>
+                            <a href="https://maps.app.goo.gl/rc3uVP3Jfeu5gBgL6" target="_blank" class="contact-link map-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                                عرض على الخريطة
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="branch-item">
+                        <h4>
+                            <svg class="branch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            فرع السياحية
+                        </h4>
+                        <div class="contact-links">
+                            <a href="tel:0916536617" class="contact-link phone-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.5a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+                                091-653-66-17
+                            </a>
+                            <a href="tel:0915278725" class="contact-link phone-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.5a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+                                091-527-87-25
+                            </a>
+                            <a href="https://maps.app.goo.gl/vC1HzMmNHfZFo1bz9" target="_blank" class="contact-link map-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                                عرض على الخريطة
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="branch-extra">
+                        <a href="mailto:contact@taksim.ly" class="contact-link email-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            contact@taksim.ly
+                        </a>
+                        <div class="hours-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span>يومياً من 10:00 صباحاً حتى 12:00 ليلاً</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messaging form feedback -->
+                <div class="contact-form-block">
+                    <h3>راسلنا مباشرة</h3>
+                    <form action="#" method="POST" onsubmit="alert('تم إرسال رسالتك بنجاح! شكرًا لتواصلك مع مطعم تقسيم.'); return false;">
+                        <label for="username">الاسم الكريم:</label>
+                        <input type="text" id="username" name="name" required placeholder="اكتب اسمك الكامل">
+
+                        <label for="useremail">البريد الإلكتروني:</label>
+                        <input type="email" id="useremail" name="email" required placeholder="name@example.com">
+
+                        <label for="usersubject">موضوع الرسالة:</label>
+                        <input type="text" id="usersubject" name="subject" required placeholder="اكتب عنوان رسالتك">
+
+                        <label for="usermessage">الرسالة:</label>
+                        <textarea id="usermessage" name="message" rows="5" required placeholder="اكتب تفاصيل رسالتك هنا..."></textarea>
+
+                        <button type="submit" class="submit-form-btn">إرسال الرسالة الآن</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= SIMPLE SITE FOOTER ================= -->
+    <footer id="site-footer" style="background: var(--card-bg); padding: 20px 20px; text-align: center; border-top: 3px solid var(--primary-color); color: var(--text-color); margin-top: 0; position: relative; bottom: 0; width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; margin: 0 0 5px 0; font-weight: 700; color: var(--primary-color);">مطعم تقسيم</p>
+            <p style="font-size: 0.9rem; margin: 0; opacity: 0.8;">Designed by Raghad, Ranad</p>
+            <p style="font-size: 0.85rem; margin: 8px 0 0 0; opacity: 0.7;">جميع الحقوق محفوظة © 2026</p>
+        </div>
+    </footer>
+
+    <!-- ================= POPUP CART MODAL ================= -->
+    <div id="cart-popup-modal" class="popup-modal">
+        <div class="popup-modal-content">
+            <span class="close-popup" onclick="toggleCartPopup()">&times;</span>
+            <h2>🛍️ الأطباق المضافة في السلة</h2>
+            <hr>
+            <ul id="cart-items-list">
+                <p style="color: #666; text-align: center;">السلة فارغة حالياً. أضف بعض الأطباق اللذيذة!</p>
+            </ul>
+            <hr>
+            <div class="popup-total">
+                <strong>المبلغ الإجمالي الكلي: </strong>
+                <span id="popup-total-cost">0</span> د.ل
+            </div>
+            <button class="checkout-btn" onclick="alert('شكرًا لطلبك! سيتم تجهيز وجبتك فوراً.'); toggleCartPopup();">تأكيد وإرسال الطلب</button>
+        </div>
+    </div>
+
+    <!-- ================= SCROLL TO TOP BUTTON ================= -->
+    <button id="scroll-to-top-btn" onclick="scrollToTop()" title="العودة لأعلى الصفحة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

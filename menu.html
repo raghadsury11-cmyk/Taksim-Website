@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة الطعام - تقسيم</title>
+    <link rel="icon" type="image/svg+xml" href="img/image-removebg-preview.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-page">
+
+    <!-- NAVBAR -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Taksim / تقسيم</h1>
+            </div>
+            <nav class="navmenu">
+                <ul>
+                    <li><a href="index.html#hero">الرئيسية</a></li>
+                    <li><a href="#menu-sections">قائمة الطعام</a></li>
+                    <li><a href="index.html#testimonials">آراء الزبائن</a></li>
+                    <li><a href="index.html#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle-btn" title="تغيير المظهر">
+                    <span class="theme-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </span>
+                    <span class="theme-label">ليلي</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- MENU CATEGORY CARDS (always visible) -->
+        <section id="menu-sections">
+            <div class="container-title">
+                <h2>قائمة المأكولات</h2>
+                <p>اختر الفئة المفضلة لديك واستكشف أطباقنا الشهية</p>
+            </div>
+            <div class="sections-grid">
+                <div class="section-box" onclick="showCategoryWrapper('all-category')">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=400" alt="جميع الأصناف">
+                    <div class="box-overlay"><h3>جميع الأصناف</h3></div>
+                </div>
+                <div class="section-box" onclick="showCategoryWrapper('top-selling')">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=400" alt="الأكثر طلباً">
+                    <div class="box-overlay"><h3>الأكثر طلباً</h3></div>
+                </div>
+                <div class="section-box" onclick="showCategoryWrapper('healthy-food')">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=400" alt="الأكل الصحي">
+                    <div class="box-overlay"><h3>الأكل الصحي</h3></div>
+                </div>
+                <div class="section-box" onclick="showCategoryWrapper('special-dishes')">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" alt="الأطباق المبتكرة والجديدة">
+                    <div class="box-overlay"><h3>الأطباق الخاصة والمبتكرة</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FULL MENU VIEW -->
+        <section id="full-menu-view" class="menu-view-container">
+
+            <!-- Search & Tabs — shown only in all-category mode -->
+            <div id="search-and-tabs">
+                <div class="search-bar-container">
+                    <input type="text" id="menu-search-input" onkeyup="filterMenuDishes()" placeholder="🔍 ابحث عن طبقك المفضل بالاسم...">
+                </div>
+                <div class="categories-nav">
+                    <button class="cat-tab-btn active" data-filter="all-category" onclick="filterCategoryTags('all-tags', event)">كل المنيو</button>
+                    <button class="cat-tab-btn" data-filter="breakfast" onclick="filterCategoryTags('breakfast', event)">الإفطار الصباحي</button>
+                    <button class="cat-tab-btn" data-filter="soups-salads" onclick="filterCategoryTags('soups-salads', event)">الشوربات والسلطات</button>
+                    <button class="cat-tab-btn" data-filter="appetizers" onclick="filterCategoryTags('appetizers', event)">المقبلات والمعجنات</button>
+                    <button class="cat-tab-btn" data-filter="pizzas" onclick="filterCategoryTags('pizzas', event)">البيتزا والصفائح</button>
+                    <button class="cat-tab-btn" data-filter="grills-meats" onclick="filterCategoryTags('grills-meats', event)">المشاوي واللحوم والأسماك</button>
+                    <button class="cat-tab-btn" data-filter="kids" onclick="filterCategoryTags('kids', event)">وجبات الأطفال</button>
+                    <button class="cat-tab-btn" data-filter="drinks" onclick="filterCategoryTags('drinks', event)">المشروبات والعصائر والموخيتو</button>
+                </div>
+            </div>
+
+            <p style="text-align:center; margin-bottom:12px; color:var(--text-color); opacity:0.9;">انقر على أي طبق لعرض التفاصيل</p>
+
+            <div class="dishes-grid" id="dishes-display-grid">
+
+                <div class="dish-card" data-tag="grills-meats" data-section="all-category top-selling">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=350" alt="أسماك تقسيم مشكلة">
+                            <div class="dish-info"><h3>أسماك تقسيم المشكلة</h3><span class="dish-price">210 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>سمك أوراثة طازج، جمبري مشوي، جمبري بدون قشر، كلمار، حلقات كلمار مقلية، يقدم مع الأرز والبطاطا المقرمشة.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('أسماك تقسيم المشكلة', 210)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="appetizers" data-section="all-category top-selling">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?q=80&w=350" alt="كبة مشوية">
+                            <div class="dish-info"><h3>كبة مشوية</h3><span class="dish-price">25 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>لحمة غنم مفرومة ومحشوة بالجوز، مشوية على الفحم ومقدمة مع دبس الرمان.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('كبة مشوية', 25)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="soups-salads" data-section="all-category healthy-food">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=350" alt="سلطة جرجير">
+                            <div class="dish-info"><h3>سلطة جرجير</h3><span class="dish-price">22 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>أوراق جرجير بري، طماطم، بصل، زيت زيتون وعصير ليمون.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('سلطة جرجير', 22)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="pizzas" data-section="all-category special-dishes">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=350" alt="بيتزا نابوليتانا">
+                            <div class="dish-info"><h3>بيتزا نابوليتانا</h3><span class="dish-price">45 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>عجينة مخمرة، صلصة طماطم، جبنة موزاريلّا، ريحان وزيت زيتون بكر.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('بيتزا نابوليتانا', 45)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="breakfast" data-section="all-category healthy-food">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=350" alt="فطور تركي">
+                            <div class="dish-info"><h3>فطور تركي متكامل</h3><span class="dish-price">35 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>جبنة، زيتون، بيض، عسل، مربى وخبز طازج.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('فطور تركي متكامل', 35)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="breakfast" data-section="all-category top-selling">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=350" alt="شكشوكة">
+                            <div class="dish-info"><h3>شكشوكة تركية</h3><span class="dish-price">18 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>بيض وطماطم وفلفل مطهو بالتوابل التركية.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('شكشوكة تركية', 18)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="breakfast" data-section="all-category">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=350" alt="مناقيش">
+                            <div class="dish-info"><h3>مناقيش الجبنة</h3><span class="dish-price">15 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>عجينة طازجة مع جبنة بيضاء وموزاريلا.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('مناقيش الجبنة', 15)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="soups-salads" data-section="all-category healthy-food">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=350" alt="شوربة عدس">
+                            <div class="dish-info"><h3>شوربة عدس</h3><span class="dish-price">12 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>عدس أحمر مع توابل شرقية وخبز محمص.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('شوربة عدس', 12)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="soups-salads" data-section="all-category">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=350" alt="سلطة يونانية">
+                            <div class="dish-info"><h3>سلطة يونانية</h3><span class="dish-price">20 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>خيار وطماطم وزيتون وجبنة فيتا.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('سلطة يونانية', 20)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="appetizers" data-section="all-category top-selling">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=350" alt="حمص">
+                            <div class="dish-info"><h3>حمص بالطحينة</h3><span class="dish-price">14 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>حمص مهروس مع طحينة وزيت زيتون.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('حمص بالطحينة', 14)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="appetizers" data-section="all-category">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?q=80&w=350" alt="بطاطا">
+                            <div class="dish-info"><h3>بطاطا مقلية</h3><span class="dish-price">10 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>بطاطا ذهبية مقرمشة مع صوص خاص.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('بطاطا مقلية', 10)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="pizzas" data-section="all-category top-selling">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=350" alt="بيتزا بيبروني">
+                            <div class="dish-info"><h3>بيتزا بيبروني</h3><span class="dish-price">48 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>جبنة موزاريلا وشرائح بيبروني.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('بيتزا بيبروني', 48)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="pizzas" data-section="all-category special-dishes">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=350" alt="بيتزا خضار">
+                            <div class="dish-info"><h3>بيتزا الخضار</h3><span class="dish-price">40 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>فلفل وأوليف وزيتون وفطر طازج.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('بيتزا الخضار', 40)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="grills-meats" data-section="all-category top-selling">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=350" alt="شيش طاووق">
+                            <div class="dish-info"><h3>شيش طاووق</h3><span class="dish-price">42 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>دجاج متبل ومشوي يقدم مع الأرز.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('شيش طاووق', 42)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="grills-meats" data-section="all-category special-dishes">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=350" alt="ستيك">
+                            <div class="dish-info"><h3>ستيك لحم</h3><span class="dish-price">85 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>لحم بقري مشوي مع صوص الفطر.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('ستيك لحم', 85)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="kids" data-section="all-category top-selling">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=350" alt="برغر أطفال">
+                            <div class="dish-info"><h3>برغر أطفال</h3><span class="dish-price">20 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>برغر صغير مع بطاطا وعصير.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('برغر أطفال', 20)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="kids" data-section="all-category">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=350" alt="ناجتس">
+                            <div class="dish-info"><h3>ناجتس الدجاج</h3><span class="dish-price">18 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>قطع دجاج مقرمشة مع صوص الجبن.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('ناجتس الدجاج', 18)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="drinks" data-section="all-category healthy-food">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?q=80&w=350" alt="عصير برتقال">
+                            <div class="dish-info"><h3>عصير برتقال طبيعي</h3><span class="dish-price">12 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>عصير برتقال طازج بدون إضافات.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('عصير برتقال طبيعي', 12)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="drinks" data-section="all-category special-dishes">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=350" alt="موخيتو">
+                            <div class="dish-info"><h3>موخيتو الفراولة</h3><span class="dish-price">16 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>فراولة ونعناع ومياه غازية.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('موخيتو الفراولة', 16)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+                <div class="dish-card" data-tag="drinks" data-section="all-category">
+                    <div class="dish-card-inner" onclick="toggleCardFlip(this)">
+                        <div class="dish-front">
+                            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=350" alt="آيس كوفي">
+                            <div class="dish-info"><h3>آيس كوفي</h3><span class="dish-price">14 د.ل</span></div>
+                        </div>
+                        <div class="dish-back">
+                            <h3>المكونات والتفاصيل</h3>
+                            <p>قهوة باردة مع حليب وكريمة خفيفة.</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('آيس كوفي', 14)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        أضف إلى السلة
+                    </button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- STICKY CART FOOTER -->
+    <footer id="shopping-summary-footer">
+        <div class="summary-container" onclick="toggleCartPopup()">
+            <div class="cart-icon-title">
+                <span class="cart-icon-svg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                </span>
+                <strong>عرض سلة المشتريات</strong>
+            </div>
+            <div class="total-cost-box"><span>الإجمالي: </span><span id="floating-total-cost">0</span> د.ل</div>
+        </div>
+    </footer>
+
+    <div id="cart-popup-modal" class="popup-modal">
+        <div class="popup-modal-content">
+            <span class="close-popup" onclick="toggleCartPopup()">&times;</span>
+            <h2>🛍️ الأطباق المضافة في السلة</h2>
+            <hr>
+            <ul id="cart-items-list"><p style="color:#666; text-align:center;">السلة فارغة حالياً. أضف بعض الأطباق!</p></ul>
+            <hr>
+            <div class="popup-total"><strong>المبلغ الإجمالي الكلي: </strong><span id="popup-total-cost">0</span> د.ل</div>
+            <button class="checkout-btn" onclick="submitOrder()">تأكيد وإرسال الطلب</button>
+        </div>
+    </div>
+
+    <button id="scroll-to-top-btn" onclick="scrollToTop()" title="العودة لأعلى الصفحة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
